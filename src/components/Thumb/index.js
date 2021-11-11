@@ -1,11 +1,18 @@
 import React from 'react'
-//styles
-import { Image } from './Thumb.styles' 
+//components
+import MovieModal from '../MovieModal'
 
-const Thumb = ({ image }) => (
-    <div>
+//styles
+import { Image, Wrapper } from './Thumb.styles' 
+
+const Thumb = ({ image, title, score }) => (
+
+    <Wrapper>
         <Image src={image} alt='movie-thumb' />
-    </div>
+        <div className="score">{score}</div>
+        <p>{title}</p>
+    </Wrapper>
+            
 )
 
 export default Thumb
