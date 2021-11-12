@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
 import Grid from './Grid'
 import Thumb from './Thumb'
 import SearchBar from './SearchBar'
+import MovieModal from './MovieModal'
 
 const Movies = () => {
 
     const [movies, setMovies] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [showModal, setShowModal] = useState(false)
+    const [movie, setMovie] =useState({
+        id: "",
+        imgsrc: "",
+        title: "",
+        overview: "",
+        vote_average: "",
+        vote_count: "",
+        release_date: ""
+    })
 
     useEffect(() => {
 
@@ -31,19 +42,50 @@ const Movies = () => {
 
     console.log(movies)
 
+    const toggleClick = (moviedata) => {
+        setShowModal(prev => !prev)
+
+        setMovie({
+            id: moviedata.id,
+            imgsrc: moviedata.imgsrc,
+            title: moviedata.title,
+            overview: moviedata.overview,
+            vote_average: moviedata.voteAvg,
+            vote_count: moviedata.voteCount,
+            release_date: moviedata.releaseDate
+        })
+        
+    }
+    console.log(movie)
+
+
     return (
         <>
             <SearchBar setSearchTerm={setSearchTerm} />
+            <MovieModal 
+            showModal={showModal}
+            image={movie.imgsrc}
+            title={movie.title}
+            date={movie.release_date}
+            overview={movie.overview}
+            score={movie.vote_average}
+            count={movie.vote_count}
+
+            />    
             <Grid header={searchTerm ? 'Search Result' : 'Most Recent Movies'}>
                 {movies.map( movie => (
                     <Thumb 
-                        key={movie.id}
-                        clickable
-                        image={process.env.REACT_APP_API_BASE_IMAGE_URL + movie.poster_path}
-                        title={movie.title}
-                        movieId={movie.id}
-                        score={movie.vote_average}
+                    key={movie.id}
+                    image={process.env.REACT_APP_API_BASE_IMAGE_URL + movie.poster_path}
+                    title={movie.title}
+                    movieId={movie.id}
+                    score={movie.vote_average}
+                    count={movie.vote_count}
+                    overview={movie.overview}
+                    date={movie.release_date}
+                    toggleClick={toggleClick}
                     />
+                    
                     )
                 )}   
             </Grid>

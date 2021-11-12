@@ -9,6 +9,7 @@ export const Image = styled.img`
   animation: animateThumb 0.5s;
   z-index: 2;
   position: relative;
+  cursor: pointer;
 
   :hover {
     opacity: 0.8;

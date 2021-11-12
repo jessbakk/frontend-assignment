@@ -1,8 +1,5 @@
 import axios from 'axios'
 
-// const [nowPlaying, setNowPlaying] = useState([])
-// const [searchTerm, setSearchTerm] = useState('')
-
 const getNowPlaying = async () => {
 
     const resp = await axios.get(
@@ -11,11 +8,6 @@ const getNowPlaying = async () => {
     return resp
 }
 
-// const getMovieSearch = async () => {
-
-// }
-
 export {
     getNowPlaying
-    // getMovieSearch
 }

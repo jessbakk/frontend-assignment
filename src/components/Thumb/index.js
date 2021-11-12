@@ -1,18 +1,28 @@
 import React from 'react'
-//components
-import MovieModal from '../MovieModal'
 
 //styles
 import { Image, Wrapper } from './Thumb.styles' 
 
-const Thumb = ({ image, title, score }) => (
+const Thumb = ({ movieId, image, title, score, count, overview, date, toggleClick }) => {
+    const movieData = {
+        id: movieId, 
+        imgsrc: image,
+        title: title, 
+        overview: overview,
+        voteAvg: score,
+        voteCount: count,
+        releaseDate: date
+    }
 
-    <Wrapper>
-        <Image src={image} alt='movie-thumb' />
-        <div className="score">{score}</div>
-        <p>{title}</p>
-    </Wrapper>
+    return (
+
+        <Wrapper>
+            <Image src={image} alt='movie-thumb' onClick={() => toggleClick(movieData)}/>
+            <div className="score">{score}</div>
+            <p>{title}</p>
+        </Wrapper>
+    )
             
-)
+}
 
 export default Thumb
