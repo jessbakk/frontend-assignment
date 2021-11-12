@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+//components
 import Grid from './Grid'
 import Thumb from './Thumb'
 import SearchBar from './SearchBar'
@@ -27,20 +27,16 @@ const Movies = () => {
         axios.get(`${process.env.REACT_APP_API_DOMAIN}/search/movie?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&query=${searchTerm}`)
         .then( resp => {
             setMovies( resp.data.results )
-            console.log(resp.data.results) 
         })
         .catch( resp => console.log(resp) )
         :
         axios.get(`${process.env.REACT_APP_API_DOMAIN}/movie/now_playing?api_key=${process.env.REACT_APP_MOVIE_DB_API_KEY}&language=en-US`)
             .then( resp => {
                 setMovies( resp.data.results )
-                console.log(resp.data.results) 
             })
             .catch( resp => console.log(resp) )
         
     }, [searchTerm])
-
-    console.log(movies)
 
     const toggleClick = (moviedata) => {
         setShowModal(prev => !prev)
@@ -56,8 +52,6 @@ const Movies = () => {
         })
         
     }
-    console.log(movie)
-
 
     return (
         <>

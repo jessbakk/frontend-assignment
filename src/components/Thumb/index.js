@@ -1,5 +1,4 @@
 import React from 'react'
-
 //styles
 import { Image, Wrapper } from './Thumb.styles' 
 

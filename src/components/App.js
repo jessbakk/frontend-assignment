@@ -1,8 +1,8 @@
 import React from 'react'
-
+//styles
 import { GlobalStyle } from '../GlobalStyles'
-
 import logo from '../images/logo.svg'
+//components
 import Movies from './Movies'
 
 

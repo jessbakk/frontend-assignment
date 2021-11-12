@@ -1,5 +1,6 @@
 import React from 'react'
-import { Background, ModalWrapper, ModalImg, ModelContent, ModalContent } from './MovieModal.styles'
+//styles
+import { Background, ModalWrapper, ModalImg, ModalContent } from './MovieModal.styles'
 
 const MovieModal = ({showModal, image, title, date, overview, score, count}) => {
 
